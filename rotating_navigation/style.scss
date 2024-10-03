@@ -1,0 +1,176 @@
+:root {
+  --c-curious-blue: #3498db;
+  --c-white: #ffffff;
+  --c-hit-gray: #a0abb4;
+  --c-light-gray: #333333;
+}
+
+body {
+  color: var(--c-light-gray);
+  height: 100svh;
+  overflow-x: hidden;
+  background-color: #333333;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 100px;
+}
+
+.header {
+  padding: 50px 35px;
+  position: relative;
+  background-color: #e0e0e0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #7d949a;
+    z-index: 1;
+  }
+}
+
+.nav {
+  position: absolute;
+  bottom: -80vh;
+  color: var(--c-white);
+  z-index: -1;
+  text-transform: uppercase;
+
+  &--active {
+    z-index: 10;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__item {
+    &-2 {
+      padding-left: 10px;
+    }
+
+    &-3 {
+      padding-left: 20px;
+    }
+  }
+}
+
+.nav__link,
+.burger {
+  outline: 2px dashed transparent;
+  outline-offset: 4px;
+  transition: color 0.3s ease-in-out, outline-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  &:hover {
+    color: #ff8848;
+  }
+
+  &:focus {
+    outline-color: #ff8848;
+  }
+
+  &:active {
+    color: #ff8848;
+    transform: scale(1.1);
+  }
+}
+
+.burger {
+  min-width: 40px;
+  height: 32px;
+  position: relative;
+  z-index: 10;
+  color: var(--c-white);
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: '';
+  }
+
+  &__line,
+  &::before,
+  &::after {
+    position: absolute;
+    left: 0;
+    top: calc(50% - 2px);
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    top: calc(100% - 2px);
+  }
+
+  &--active {
+
+    .burger__line {
+      transform: scale(0);
+    }
+
+    &::before,
+    &::after {
+      top: 50%;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0e0e0;
+  transform-origin: top left;
+  transition: transform 0.5s ease-in-out;
+
+  &--active {
+    transform: rotate(-25deg);
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 38px;
+  }
+
+  &__text {
+    font-size: 18px;
+  }
+
+  &__img {
+    width: 50%;
+    object-fit: cover;
+  }
+
+  &__subtitle {
+    font-size: 24px;
+  }
+}
