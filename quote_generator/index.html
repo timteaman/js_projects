@@ -5,32 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote generator</title>
-    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+
     <div class="container">
+
         <div class="quote-generator" id="quoteGenerator">
 
             <span class="loader" id="loader"></span>
 
-            <blockquote class="quote" id="quote">
-                <span class="quote__text icon-mask icon-quote" id="quoteText"></span>
+            <blockquote class="quote quote--hidden" id="quote">
+                <span class="quote__text" id="quoteText">
+                    <i class="fa-solid fa-quote-left" id="quoteIcon"></i>
+                </span>
                 <cite class="quote__author" id="quoteAuthor"></cite>
             </blockquote>
 
             <div class="quote-generator__wrapper">
 
-                <button class="quote-generator__tweet-quote button icon-mask icon-twitter" id="tweetQuoteButton"
-                    type="button"></button>
+                <button class="quote-generator__tweet-quote button" id="tweetQuoteButton" type="button">
+                    <i class="fa-brands fa-twitter fa-xl"></i>
+                </button>
 
-                <button class="button" id="newQuoteButton" type="button">New quote</button>
+                <button class="button" id="newQuoteButton" type="button">
+                    New quote
+                </button>
 
             </div>
 
         </div>
+
     </div>
     <script src="script.js" type="module"></script>
 

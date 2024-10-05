@@ -5,10 +5,6 @@
   font-style: normal;
 }
 
-body {
-  background: linear-gradient(to right, #20626c, #a97053);
-}
-
 .container {
   padding: 15px;
   width: 100%;
@@ -16,22 +12,18 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background: linear-gradient(to right, #20626c, #a97053);
 }
 
 .quote-generator {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   padding: 10px;
   max-width: 700px;
   width: 100%;
   border-radius: 14px;
   background: rgba(237, 237, 237, 0.55);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  text-align: center;
 
   &__wrapper {
     display: flex;
@@ -48,27 +40,19 @@ body {
   width: 100%;
   min-height: 120px;
   font-size: 44px;
-  line-height: 1;
   font-family: 'LittleQuotes', sans-serif;
 
-  &__text {
-    gap: 5px;
-    align-items: flex-start !important;
+  &--hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
-}
 
-#quoteText:empty::before {
-  content: none;
-}
-
-.hidden {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.visible {
-  opacity: 1;
-  transition: opacity 0.3s ease;
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
 }
 
 .loader {
@@ -95,56 +79,22 @@ body {
 }
 
 .button {
-  background: rgba(237, 237, 237, 0.55);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  border-radius: 16px;
+  background: rgba(240, 240, 240, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
   padding: 10px 20px;
-  border: none;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2),
-    -4px -4px 10px rgba(255, 255, 255, 0.5);
-  outline: 2px solid transparent;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease-in-out;
-}
 
-.button:hover {
-  transform: translateY(-3px);
-}
+  transition: transform 0.3s ease;
 
-.button:active {
-  transform: translateY(1px);
-  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.5);
-}
-
-.button:focus {
-  outline-color: #333333;
-}
-
-.icon-mask {
-  display: flex;
-  align-items: center;
-
-  &::before {
-    content: '';
-    width: 32px;
-    height: 32px;
-    mask-size: cover;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    background-color: black;
-    transition: background-color 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-3px);
   }
-}
 
-.icon-twitter {
-  &::before {
-    mask-image: url('../assets/icon-twitter.svg');
+  &:active {
+    transform: translateY(1px);
   }
-}
 
-.icon-quote {
-  &::before {
-    mask-image: url('../assets/icon-quote.svg');
+  &:focus {
+    outline: 2px solid #333333;
   }
 }

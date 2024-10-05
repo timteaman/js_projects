@@ -4,11 +4,6 @@
   font-weight: normal;
   font-style: normal;
 }
-body {
-  background: -webkit-gradient(linear, left top, right top, from(#20626c), to(#a97053));
-  background: linear-gradient(to right, #20626c, #a97053);
-}
-
 .container {
   padding: 15px;
   width: 100%;
@@ -22,31 +17,19 @@ body {
       -ms-flex-align: center;
           align-items: center;
   min-height: 100vh;
+  background: -webkit-gradient(linear, left top, right top, from(#20626c), to(#a97053));
+  background: linear-gradient(to right, #20626c, #a97053);
 }
 
 .quote-generator {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   gap: 10px;
   padding: 10px;
   max-width: 700px;
   width: 100%;
   border-radius: 14px;
   background: rgba(237, 237, 237, 0.55);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  text-align: center;
 }
 .quote-generator__wrapper {
   display: -webkit-box;
@@ -73,30 +56,19 @@ body {
   width: 100%;
   min-height: 120px;
   font-size: 44px;
-  line-height: 1;
   font-family: "LittleQuotes", sans-serif;
 }
-.quote__text {
-  gap: 5px;
-  -webkit-box-align: start !important;
-      -ms-flex-align: start !important;
-          align-items: flex-start !important;
-}
-
-#quoteText:empty::before {
-  content: none;
-}
-
-.hidden {
+.quote--hidden {
   opacity: 0;
-  -webkit-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-
-.visible {
+.quote--visible {
   opacity: 1;
-  -webkit-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .loader {
@@ -136,66 +108,24 @@ body {
   }
 }
 .button {
-  background: rgba(237, 237, 237, 0.55);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  border-radius: 16px;
+  background: rgba(240, 240, 240, 0.6);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  border-radius: 12px;
   padding: 10px 20px;
-  border: none;
-  -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), -4px -4px 10px rgba(255, 255, 255, 0.5);
-          box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), -4px -4px 10px rgba(255, 255, 255, 0.5);
-  outline: 2px solid transparent;
-  -webkit-transition: outline-color 0.3s ease-in-out, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-  transition: outline-color 0.3s ease-in-out, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease-in-out;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease-in-out, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
-
 .button:hover {
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
 }
-
 .button:active {
   -webkit-transform: translateY(1px);
           transform: translateY(1px);
-  -webkit-box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.5);
-          box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.5);
 }
-
 .button:focus {
-  outline-color: #333333;
+  outline: 2px solid #333333;
 }
-
-.icon-mask {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.icon-mask::before {
-  content: "";
-  width: 32px;
-  height: 32px;
-  -webkit-mask-size: cover;
-          mask-size: cover;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-          mask-position: center;
-  background-color: black;
-  -webkit-transition: background-color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.icon-twitter::before {
-  -webkit-mask-image: url("../assets/icon-twitter.svg");
-          mask-image: url("../assets/icon-twitter.svg");
-}
-
-.icon-quote::before {
-  -webkit-mask-image: url("../assets/icon-quote.svg");
-          mask-image: url("../assets/icon-quote.svg");
-}/*# sourceMappingURL=style.css.map */

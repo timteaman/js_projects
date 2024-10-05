@@ -7,24 +7,26 @@ const quoteAuthorElement = document.getElementById('quoteAuthor');
 const loaderElement = document.getElementById('loader');
 const quoteContainer = document.getElementById('quote');
 
+// loading spinner
+
+function toggleVisibility(elementToShow, elementToHide) {
+  elementToShow.classList.remove('quote--hidden');
+  elementToShow.classList.add('quote--visible');
+
+  elementToHide.classList.remove('quote--visible');
+  elementToHide.classList.add('quote--hidden');
+}
+
 // show loading spinner
 
 function loadingShow() {
-  loaderElement.classList.toggle('hidden');
-  loaderElement.classList.add('visible');
-
-  quoteContainer.classList.toggle('visible');
-  quoteContainer.classList.add('hidden');
+  toggleVisibility(loaderElement, quoteContainer);
 }
 
 // hide loading spinner
 
 function loadingHide() {
-  quoteContainer.classList.remove('hidden');
-  quoteContainer.classList.add('visible');
-
-  loaderElement.classList.remove('visible');
-  loaderElement.classList.add('hidden');
+  toggleVisibility(quoteContainer, loaderElement);
 }
 
 // get random new quote
@@ -45,8 +47,9 @@ function updateQuote() {
 
   setTimeout(() => {
     const quote = newQuote();
-    quoteTextElement.textContent = quote.text;
+    quoteTextElement.lastChild.textContent = ` ${quote.text}`;
     quoteAuthorElement.textContent = quote.author;
+
     loadingHide();
   }, 501);
 }
