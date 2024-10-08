@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinity scroll</title>
+  <link href="css/reset.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <div class="infinity-scroll">
+      <div class="container">
+
+        <h1 class="infinity-scroll__title">Pexels API - Infinity scroll</h1>
+
+        <div class="loader" id="loader" hidden></div>
+
+        <ul class="gallery" id="gallery">
+          <template id="template">
+
+            <li class="gallery__item">
+              <a class="gallery__link" href="">
+                <img class="gallery__photo" src="" alt="">
+              </a>
+            </li>
+
+          </template>
+        </ul>
+
+      </div>
+    </div>
+  </main>
+  <script src="index.js"></script>
+</body>
+
+</html>
