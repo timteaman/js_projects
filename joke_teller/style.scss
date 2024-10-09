@@ -1,0 +1,46 @@
+body {
+  background-color: #45badd;
+}
+
+.container {
+  padding: 0 15px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url('../assets/robot.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.button {
+  padding: 20px 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #ff3482;
+  border-radius: 5px;
+  box-shadow: 2px 2px 20px 10px rgba(0, 0, 0, 0.2);
+  outline: 2px solid transparent;
+  transition: filter 0.4s ease-in-out, transform 0.4s ease-in-out, outline-color 0.4s ease-in-out;
+
+  &:hover {
+    filter: brightness(95%)
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus {
+    outline-color: #ffffff;
+  }
+
+  &:disabled {
+    cursor: default;
+    filter: brightness(30%);
+  }
+}
