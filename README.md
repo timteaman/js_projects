@@ -1,3 +1,7 @@
-- [Progress Steps](https://timteaman.github.io/js_projects/progress_steps)
 - [Quote Generator](https://timteaman.github.io/js_projects/quote_generator)
+- [Progress Steps](https://timteaman.github.io/js_projects/progress_steps)
+- [Rotating Navigation](https://timteaman.github.io/js_projects/joke_teller)
+- [Progress Steps](https://timteaman.github.io/js_projects/blurry_loading)
+- [Quote Generator](https://timteaman.github.io/js_projects/hidden_search)
+- [Rotating Navigation](https://timteaman.github.io/js_projects/infinity_scroll)
 - [Rotating Navigation](https://timteaman.github.io/js_projects/rotating_navigation)
