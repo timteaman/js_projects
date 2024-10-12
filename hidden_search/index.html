@@ -15,9 +15,6 @@
   <main>
     <div class="container">
 
-      <h1>Just press search button</h1>
-
-
       <div class="search" id="search">
         <input class="search__input" id="searchInput" type="text" placeholder="Search..." required
           autocomplete="off"></input>
@@ -26,25 +23,82 @@
         </button>
       </div>
 
-      <div class="search search-second" id="searchSecond">
-        <input class="search__input search-second__input" id="searchSecondInput" type="text" placeholder="Search..."
-          required autocomplete="off"></input>
-        <button class="search__button search-second__button" id="searchSecondButton" type="button">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
+      <nav class="filters">
+        <div class="filters__group">
+          <label for="countryFilter" class="filters__label">Country</label>
+          <select id="countryFilter" class="filters__select">
+            <option value="">All Countries</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="France">France</option>
+            <option value="Spain">Spain</option>
+            <option value="Italy">Italy</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Canada">Canada</option>
+          </select>
+        </div>
+
+        <div class="filters__group">
+          <label for="genreFilter" class="filters__label">Genre</label>
+          <select id="genreFilter" class="filters__select">
+            <option value="">All Genres</option>
+            <option value="Novel">Novel</option>
+            <option value="Dystopian">Dystopian</option>
+            <option value="Romance">Romance</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Historical">Historical</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Psychological Thriller">Psychological Thriller</option>
+          </select>
+        </div>
+
+        <div class="filters__group">
+          <label for="yearFilter" class="filters__label">Year</label>
+          <select id="yearFilter" class="filters__select">
+            <option value="">All Years</option>
+            <option value="Before 1900">Before 1900</option>
+            <option value="1900-1950">1900-1950</option>
+            <option value="1951-2000">1951-2000</option>
+            <option value="After 2000">After 2000</option>
+          </select>
+        </div>
+      </nav>
+
+      <div class="sort">
+        <label for="sortOptions" class="sort__label">Sort by:</label>
+        <select id="sortOptions" class="sort__select">
+          <option value="titleAsc">Title (A-Z)</option>
+          <option value="titleDesc">Title (Z-A)</option>
+          <option value="dateAsc">Publication Date (Oldest to Newest)</option>
+          <option value="dateDesc">Publication Date (Newest to Oldest)</option>
+          <option value="authorAsc">Author (A-Z)</option>
+          <option value="authorDesc">Author (Z-A)</option>
+        </select>
       </div>
 
-      <div class="search search-third" id="searchThird">
-        <input class="search__input search-third__input" id="searchThirdInput" type="text" placeholder="Search..."
-          required autocomplete="off"></input>
-        <button class="search__button search-third__button" id="searchThirdButton" type="button">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
+      <span class="book-list__messageNotFound" id="bookNotFoundMessage">Book not found</span>
+
+      <ul class="book-list" id="bookList">
+        <template>
+          <li class="book-list__item">
+            <h3 class="book-list__title"></h3>
+            <span class="book-list__author"></span>
+            <div class="book-list__detail">
+              <span class="book-list__country"></span>
+              <span class="book-list__year"></span>
+              <span class="book-list__ganre"></span>
+            </div>
+
+          </li>
+        </template>
+
+      </ul>
 
     </div>
+
   </main>
-  <script src="index.js"></script>
+
+  <script src="index.js" type="module"></script>
 </body>
 
 </html>
