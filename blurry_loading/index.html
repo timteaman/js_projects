@@ -7,7 +7,7 @@
   <title>Blurry loading</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <link href="css/reset.min.css" rel="stylesheet">
-  <link href="css/style.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,9 +15,28 @@
     <div class="container">
 
       <div class="loading" id="loading">
-        <div class="loading-bg" id="loadingBg"></div>
-        <span class="loading__text" id="loadingText">0%</span>
+
+        <span class="loading__bg" id="loadingBg"></span>
+
+        <div class="loading__inner" id="loadingInner">
+
+          <span class="loading__title" id="loadingTitle">Loading
+            <span class="loading__title-animation"></span>
+          </span>
+          <span class="loading__text" id="loadingText">
+            Mowing the lawn
+          </span>
+
+        </div>
+
+        <div class="loading-progress" id="loadingProgress">
+          <div class="loading-progress__line" id="loadingProgressLine">
+          </div>
+        </div>
+
       </div>
+
+
 
     </div>
   </main>
