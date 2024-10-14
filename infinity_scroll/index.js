@@ -1,14 +1,12 @@
 const galleryContainer = document.getElementById('gallery');
 const loader = document.getElementById('loader');
 
-let isReadyForNewImages = false;
 let loadedImagesCount = 0;
 let totalImagesInBatch = 0;
 let imagesDataArray = [];
 
 const pexelsApiKey = '2faaUZVru2WxeqRFW6t58ld6S47E2zWXpMxiwRsWjUUPdNod4uFYpJex';
-const randomPageNumber = Math.floor(Math.random() * 100) + 1;
-const pexelsApiUrl = `https://api.pexels.com/v1/curated?per_page=10&page=${randomPageNumber}`;
+let randomPageNumber = Math.floor(Math.random() * 100) + 1;
 
 function applyAttributes(element, attributes) {
   for (const key in attributes) {
@@ -38,7 +36,7 @@ function createGalleryItem(data) {
 
   const galleryImage = template.querySelector('.gallery__photo');
   applyAttributes(galleryImage, {
-    src: data.src.original,
+    src: data.src.medium,
     alt: data.alt || 'Image from Pexels',
   });
   galleryImage.addEventListener('load', handleImageLoad);
@@ -46,8 +44,12 @@ function createGalleryItem(data) {
   return template;
 }
 
+// fetch images
+
 async function fetchImages() {
   loader.hidden = false;
+  randomPageNumber++;
+  const pexelsApiUrl = `https://api.pexels.com/v1/curated?per_page=10&page=${randomPageNumber}`;
   const response = await fetch(pexelsApiUrl, {
     headers: {
       Authorization: pexelsApiKey,
@@ -62,34 +64,18 @@ async function fetchImages() {
     const galleryItem = createGalleryItem(imageData);
     galleryContainer.appendChild(galleryItem);
   });
-  isReadyForNewImages = true;
 }
 
-// throttler
-function throttle(func, delay) {
-  let lastCall = 0;
-  return function (...args) {
-    const now = new Date().getTime();
-    if (now - lastCall >= delay) {
-      lastCall = now;
-      return func(...args);
-    }
-  };
-}
+// scroll
 
-window.addEventListener(
-  'scroll',
-  throttle(() => {
-    if (
-      window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 1000 &&
-      isReadyForNewImages
-    ) {
-      isReadyForNewImages = false;
-      loader.hidden = false;
-      fetchImages();
-    }
-  }, 1000)
-);
+window.addEventListener('scroll', () => {
+  if (
+    window.innerHeight + window.scrollY >=
+    document.body.offsetHeight - 1000
+  ) {
+    loader.hidden = true;
+    fetchImages();
+  }
+});
 
 fetchImages();
