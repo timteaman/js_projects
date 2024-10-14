@@ -9,27 +9,67 @@
 }
 
 .infinity-scroll {
-  position: relative;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__title {
     margin-bottom: 12px;
-    text-align: center;
     font-size: 82px;
+  }
+
+  &__label {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 16px;
+    background-color: #000;
   }
 }
 
 .gallery {
-  column-count: 4;
-  column-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 
   &__item {
-    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      .details {
+        bottom: 0;
+      }
+    }
   }
 
   &__photo {
-    display: block;
     width: 100%;
     height: auto;
+  }
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  color: #ffffff;
+  width: 100%;
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  transition: bottom 0.3s ease-in-out;
+
+  &__photographer {
+    display: flex;
+    gap: 8px;
   }
 }
 

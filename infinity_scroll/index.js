@@ -1,79 +1,67 @@
 const galleryContainer = document.getElementById('gallery');
 const loader = document.getElementById('loader');
-
-let loadedImagesCount = 0;
-let totalImagesInBatch = 0;
-let imagesDataArray = [];
-
+const searchInput = document.getElementById('searchInput');
 const pexelsApiKey = '2faaUZVru2WxeqRFW6t58ld6S47E2zWXpMxiwRsWjUUPdNod4uFYpJex';
+
 let randomPageNumber = Math.floor(Math.random() * 100) + 1;
+let isLoading = false;
 
-function applyAttributes(element, attributes) {
-  for (const key in attributes) {
-    element.setAttribute(key, attributes[key]);
-  }
-}
+async function fetchImages() {
+  if (isLoading) return;
+  isLoading = true;
+  loader.hidden = false;
 
-function handleImageLoad() {
-  loadedImagesCount++;
-  if (loadedImagesCount === totalImagesInBatch) {
-    isReadyForNewImages = true;
-    if (loadedImagesCount > 0) {
-      loader.hidden = true;
-    }
+  randomPageNumber++;
+  const pexelsApiUrl = `https://api.pexels.com/v1/curated?per_page=10&page=${randomPageNumber}`;
+
+  try {
+    const response = await fetch(pexelsApiUrl, {
+      headers: {
+        Authorization: pexelsApiKey,
+      },
+    });
+    const data = await response.json();
+
+    data.photos.forEach((imageData) => {
+      const galleryItem = createGalleryItem(imageData);
+      galleryContainer.appendChild(galleryItem);
+    });
+  } catch (error) {
+    console.error(error);
+  } finally {
+    loader.hidden = true;
+    isLoading = false;
   }
 }
 
 function createGalleryItem(data) {
   const template = document.getElementById('template').content.cloneNode(true);
 
-  const imageLink = template.querySelector('.gallery__link');
-  applyAttributes(imageLink, {
-    href: data.url,
-    target: '_blank',
-    rel: 'noopener noreferrer',
-  });
-
   const galleryImage = template.querySelector('.gallery__photo');
-  applyAttributes(galleryImage, {
-    src: data.src.medium,
-    alt: data.alt || 'Image from Pexels',
+  galleryImage.src = data.src.medium;
+  galleryImage.alt = data.alt || 'Image from Pexels';
+
+  const detailsPhotographer = template.querySelector('.details__photographer');
+  detailsPhotographer.textContent = data.photographer;
+
+  const detailsDownload = template.querySelector('.details__download');
+  detailsDownload.addEventListener('click', (event) => {
+    event.preventDefault();
+    const downloadUrl = `https://images.pexels.com/photos/${data.id}/pexels-photo-${data.id}.jpeg?cs=srgb&dl=pexels-${data.photographer}-${data.id}.jpg&fm=jpg`;
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = `${data.id}.jpeg`;
+    link.click();
   });
-  galleryImage.addEventListener('load', handleImageLoad);
 
   return template;
 }
 
-// fetch images
-
-async function fetchImages() {
-  loader.hidden = false;
-  randomPageNumber++;
-  const pexelsApiUrl = `https://api.pexels.com/v1/curated?per_page=10&page=${randomPageNumber}`;
-  const response = await fetch(pexelsApiUrl, {
-    headers: {
-      Authorization: pexelsApiKey,
-    },
-  });
-  const data = await response.json();
-  imagesDataArray = data.photos;
-  loadedImagesCount = 0;
-  totalImagesInBatch = imagesDataArray.length;
-
-  imagesDataArray.forEach((imageData) => {
-    const galleryItem = createGalleryItem(imageData);
-    galleryContainer.appendChild(galleryItem);
-  });
-}
-
-// scroll
-
 window.addEventListener('scroll', () => {
   if (
-    window.innerHeight + window.scrollY >=
-    document.body.offsetHeight - 1000
+    window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 &&
+    !isLoading
   ) {
-    loader.hidden = true;
     fetchImages();
   }
 });
