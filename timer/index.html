@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link href="css/reset.min.css" rel="stylesheet">
+  <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <div class="container">
+
+      <div class="timer">
+        <div class="timer__info">
+          Set timer for
+          <label class="timer__label" for="timerInput">
+            <input class="timer__input" id="timerInput" type="number" name="timer" value="1" min="1" max="60">
+          </label>
+          minutes
+        </div>
+
+
+        <div class="countdown">
+          <span class="countdown__number" id="countdownMinTens">0</span>
+          <span class="countdown__number" id="countdownMin">0</span>
+          <span class="countdown__dots">:</span>
+          <span class="countdown__number" id="countdownSecTens">0</span>
+          <span class="countdown__number" id="countdownSec">0</span>
+        </div>
+
+        <div class="timer__wrapper">
+          <button class="timer__button timer__button--start" id="timerButtonStart" type="submit">
+            Start timer
+          </button>
+          <button class="timer__button timer__button--reset" id="timerButtonReset" type="submit">
+            Reset timer
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <script src="index.js"></script>
+</body>
+
+</html>
