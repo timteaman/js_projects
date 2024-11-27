@@ -5,5 +5,4 @@
 - [Music player](https://timteaman.github.io/js_projects/music_player)
 - [Quote generator](https://timteaman.github.io/js_projects/quote_generator)
 - [Blurry Loading](https://timteaman.github.io/js_projects/blurry_loading)
-- [Infinity Scroll](https://timteaman.github.io/js_projects/infinity_scroll)
 - [Timer](https://timteaman.github.io/js_projects/timer)
